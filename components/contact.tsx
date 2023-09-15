@@ -7,8 +7,10 @@ import { useSectionInView } from "@/lib/hooks";
 import { sendEmail } from "@/actions/sendEmail";
 import SubmitBtn from "./submit-btn";
 import toast from "react-hot-toast";
+import { PortableTextBlock } from "sanity";
+import { PortableText } from "@portabletext/react";
 
-export default function Contact() {
+export default function Contact({ contact }: { contact: PortableTextBlock[]}) {
   const { ref } = useSectionInView("Contact");
 
   return (
@@ -31,13 +33,9 @@ export default function Contact() {
     >
       <SectionHeading>Contact me</SectionHeading>
 
-      <p className="text-gray-700 -mt-6 dark:text-white/80">
-        Please contact me directly at{" "}
-        <a className="underline" href="mailto:example@gmail.com">
-          example@gmail.com
-        </a>{" "}
-        or through this form.
-      </p>
+      <div className="text-gray-700 -mt-6 dark:text-white/80">
+        <PortableText value={contact} />
+      </div>
 
       <form
         className="mt-10 flex flex-col dark:text-black"
