@@ -8,10 +8,6 @@ import Link from "next/link";
 import { FaHome, FaSearch } from "react-icons/fa";
 import { ProjectType } from "@/lib/types";
 
-export const metadata = {
-  title: "Akash | Projects",
-  description: "Akash's personal portfolio website. Used to showcase my projects, experience and skills.",
-};
 
 export default function AllProjects() {
   const [projectsData, setProjectsData] = useState<ProjectType[]>([]);
