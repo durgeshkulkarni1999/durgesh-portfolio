@@ -31,7 +31,7 @@ export default function AllProjects() {
         <SectionHeading>My projects</SectionHeading>
       </div>
 
-      <div className="flex justify-center items-center space-x-4 mb-4">
+      {/* <div className="flex justify-center items-center space-x-4 mb-4">
         <FaSearch />
         <input
           type="text"
@@ -39,7 +39,19 @@ export default function AllProjects() {
           onChange={event => setSearchTerm(event.target.value)}
           className="w-full sm:w-1/2 lg:w-1/3 p-2 rounded border dark:bg-gray-800 dark:text-white"
         />
+      </div> */}
+      <div className="flex justify-center items-center mb-4 p-4 sm:p-0">
+        <div className="relative w-full sm:w-1/2 lg:w-1/3">
+          <FaSearch className="absolute top-0 left-0 ml-3 mt-3 text-blue-500" />
+          <input
+            type="text"
+            placeholder="Search projects by name ..."
+            onChange={event => setSearchTerm(event.target.value)}
+            className="w-full p-2 pl-10 rounded-full border dark:bg-gray-800 dark:text-white shadow-lg"
+          />
+        </div>
       </div>
+
 
       <section className="flex flex-col items-center px-4 sm:px-0 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
