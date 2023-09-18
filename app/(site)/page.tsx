@@ -11,29 +11,28 @@ import Skills from "@/components/skills";
 import { getExperience, getPage, getProjects } from "@/sanity/sanity-utils";
 import { ExperienceType, PageType, ProjectType } from '@/lib/types';
 
-import Header from "@/components/header";
-import ActiveSectionContextProvider from "@/context/active-section-context";
-// import Footer from "@/components/footer";
-// import ThemeSwitch from "@/components/theme-switch";
-// import ThemeContextProvider from "@/context/theme-context";
-// import { Toaster } from "react-hot-toast";
+export default async function Home() {
+  
+  const experiences = await getExperience();
+  const projects = await getProjects();
+  const pageContent = await getPage();
 
-export default function Home() {
-  const [experiences, setExperiences] = useState<ExperienceType[]>([]);
-  const [projects, setProjects] = useState<ProjectType[]>([]);
-  const [pageContent, setPageContent] = useState<PageType[]>([]);
+  // const [experiences, setExperiences] = useState<ExperienceType[]>([]);
+  // const [projects, setProjects] = useState<ProjectType[]>([]);
+  // const [pageContent, setPageContent] = useState<PageType[]>([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const exp = await getExperience();
-      const proj = await getProjects();
-      const page = await getPage();
-      setExperiences(exp);
-      setProjects(proj);
-      setPageContent(page);
-    };
-    fetchData();
-  }, []);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const exp = await getExperience();
+  //     const proj = await getProjects();
+  //     const page = await getPage();
+  //     setExperiences(exp);
+  //     setProjects(proj);
+  //     setPageContent(page);
+  //   };
+  //   fetchData();
+  // }, []);
 
   if (!pageContent.length) return null;
 
@@ -43,9 +42,6 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center px-4">
-    {/* <ThemeContextProvider> */}
-      <ActiveSectionContextProvider>
-        <Header />
         <Intro intro={pageContent} />
         <SectionDivider />
         <About about={about} />
@@ -53,11 +49,6 @@ export default function Home() {
         <Skills skills={skills} />
         <Experience experiences={experiences} />
         <Contact contact={contact} />
-        {/* <Footer /> */}
-        {/* <Toaster position="top-right" /> */}
-        {/* <ThemeSwitch /> */}
-      </ ActiveSectionContextProvider>
-      {/* </ ThemeContextProvider> */}
     </main>
   )
 }

@@ -14,11 +14,14 @@ export type ExperienceType = {
 
 export type ProjectType = {
     _id: string;
-    title: string;
+    name: string;
     description: PortableTextBlock[];
     tags: string[];
     image: string;
     front: string;
+    slug: string;
+    liveUrl: string;
+    githubUrl: string;
   };
 
 export type PageType = {

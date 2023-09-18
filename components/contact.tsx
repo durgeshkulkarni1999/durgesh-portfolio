@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
@@ -9,9 +8,24 @@ import SubmitBtn from "./submit-btn";
 import toast from "react-hot-toast";
 import { PortableTextBlock } from "sanity";
 import { PortableText } from "@portabletext/react";
+import { useRef } from 'react';
+
+interface Ref {
+  current: HTMLInputElement | null;
+}
+
+interface InputRef {
+  current: HTMLInputElement | null;
+}
+
+interface TextareaRef {
+  current: HTMLTextAreaElement | null;
+}
 
 export default function Contact({ contact }: { contact: PortableTextBlock[]}) {
   const { ref } = useSectionInView("Contact");
+  const emailRef: InputRef = useRef(null);
+  const textareaRef: TextareaRef = useRef(null);
 
   return (
     <motion.section
@@ -37,7 +51,7 @@ export default function Contact({ contact }: { contact: PortableTextBlock[]}) {
         <PortableText value={contact} />
       </div>
 
-      <form
+      <form 
         className="mt-10 flex flex-col dark:text-black"
         action={async (formData) => {
           const { data, error } = await sendEmail(formData);
@@ -48,6 +62,14 @@ export default function Contact({ contact }: { contact: PortableTextBlock[]}) {
           }
 
           toast.success("Email sent successfully!");
+
+          if (emailRef.current) {
+            emailRef.current.value = '';
+          }
+          
+          if (textareaRef.current) {
+            textareaRef.current.value = ''; 
+          }
         }}
       >
         <input
@@ -57,6 +79,7 @@ export default function Contact({ contact }: { contact: PortableTextBlock[]}) {
           required
           maxLength={500}
           placeholder="Your email"
+          ref={emailRef}
         />
         <textarea
           className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
@@ -64,6 +87,7 @@ export default function Contact({ contact }: { contact: PortableTextBlock[]}) {
           placeholder="Your message"
           required
           maxLength={5000}
+          ref={textareaRef}
         />
         <SubmitBtn />
       </form>

@@ -41,11 +41,33 @@ export async function getProjects(): Promise<ProjectType[]> {
         groq`*[_type == "project"]{
             _id,
             _createdAt,
-            title,
+            name,
             front,
             description,
             tags,
             "image": image.asset->url,
+            "slug": slug.current,
+            liveUrl,
+            githubUrl,
         }`
+    );
+}
+
+export async function getProject(slug: string): Promise<ProjectType> {
+
+    return createClient(clientConfig).fetch(
+        groq`*[_type == "project" && slug.current == $slug][0]{
+            _id,
+            _createdAt,
+            name,
+            front,
+            description,
+            tags,
+            "image": image.asset->url,
+            "slug": slug.current,
+            liveUrl,
+            githubUrl,
+        }`,
+        { slug }
     );
 }

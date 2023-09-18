@@ -14,7 +14,7 @@ import { ExperienceType } from "@/lib/types";
 import { PortableText } from "@portabletext/react";
 
 export default function Experience({ experiences }: { experiences: ExperienceType[]}) {
-  const { ref } = useSectionInView("Experience");
+  const { ref } = useSectionInView("Experience", 0.5);
   const { theme } = useTheme();
 
   return (
