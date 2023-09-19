@@ -13,26 +13,26 @@ import { ExperienceType, PageType, ProjectType } from '@/lib/types';
 
 export default async function Home() {
   
-  const experiences = await getExperience();
-  const projects = await getProjects();
-  const pageContent = await getPage();
+  // const experiences = await getExperience();
+  // const projects = await getProjects();
+  // const pageContent = await getPage();
 
-  // const [experiences, setExperiences] = useState<ExperienceType[]>([]);
-  // const [projects, setProjects] = useState<ProjectType[]>([]);
-  // const [pageContent, setPageContent] = useState<PageType[]>([]);
+  const [experiences, setExperiences] = useState<ExperienceType[]>([]);
+  const [projects, setProjects] = useState<ProjectType[]>([]);
+  const [pageContent, setPageContent] = useState<PageType[]>([]);
 
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const exp = await getExperience();
-  //     const proj = await getProjects();
-  //     const page = await getPage();
-  //     setExperiences(exp);
-  //     setProjects(proj);
-  //     setPageContent(page);
-  //   };
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const exp = await getExperience();
+      const proj = await getProjects();
+      const page = await getPage();
+      setExperiences(exp);
+      setProjects(proj);
+      setPageContent(page);
+    };
+    fetchData();
+  }, []);
 
   if (!pageContent.length) return null;
 
