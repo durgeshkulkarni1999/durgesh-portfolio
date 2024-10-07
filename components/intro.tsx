@@ -35,7 +35,7 @@ export default function Intro({intro}: {intro: PageType[]}) {
           >
             <Image
               src={data.profileImage}
-              alt="Akash's portfolio profile picture"
+              alt="Durgesh's portfolio profile picture"
               width="192"
               height="192"
               quality="95"
