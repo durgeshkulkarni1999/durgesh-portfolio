@@ -8,7 +8,7 @@ const Loading = () => {
       <div className="text-center">
 
         <h2 className="text-4xl font-bold text-gray-700 dark:text-gray-100">
-          Akash's Portfolio  
+          Durgesh's Portfolio  
         </h2>
 
         <div className="flex items-center justify-center mt-4">
