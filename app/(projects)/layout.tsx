@@ -9,8 +9,8 @@ import Loading from "./loading";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Akash | Personal Portfolio",
-  description: "Akash's personal portfolio website. Used to showcase my projects, experience and skills.",
+  title: "Durgesh | Personal Portfolio",
+  description: "Durgesh's personal portfolio website. Used to showcase my projects, experience and skills.",
 };
 
 export default function RootLayout({
