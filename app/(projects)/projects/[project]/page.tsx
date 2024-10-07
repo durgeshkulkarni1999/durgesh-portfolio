@@ -11,8 +11,8 @@ type Props = {
 }
 
 export const metadata = {
-  title: "Akash | Projects",
-  description: "Akash's personal portfolio website. Used to showcase my projects, experience and skills.",
+  title: "Durgesh | Projects",
+  description: "Durgesh's personal portfolio website. Used to showcase my projects, experience and skills.",
 };
 
 const IndProject = async ({params}: Props ) => {
